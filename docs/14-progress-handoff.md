@@ -10,6 +10,7 @@ Tài liệu này là điểm bắt đầu khi chuyển môi trường phát tri�
 - Foundation trên `main`: `f9093c4`
 - Slice 1 Content Model: `abac1de`
 - Slice 2 Learning vertical: `70050fc`
+- Feature-branch CI: `9777e5c`
 
 Sau khi clone hoặc pull, kiểm tra commit mới nhất bằng `git log -3 --oneline`. Commit chứa chính tài
 liệu handoff này nằm sau `70050fc`.
@@ -39,8 +40,10 @@ formative quiz và checklist evidence.
   hoặc path tương đối; student payload không chứa `correctOptionId`.
 - Handoff validator: PASS 7 nhóm. Python package `jsonschema` chưa cài nên phần kiểm tra Python đầy đủ
   được skip; Ajv runtime và Vitest vẫn kiểm tra JSON Schema v2.
-- Docker production images đã PASS ở Slice 1. Slice 2 chưa build lại local vì Docker Desktop daemon
-  không hoạt động ở cuối phiên; GitHub Actions phải xác nhận Docker matrix sau khi push.
+- Docker Desktop daemon không hoạt động ở cuối phiên Windows nên không build lại local. GitHub
+  Actions run `35518814751` đã PASS quality, `docker (admin-studio)` và
+  `docker (learning-workspace)` cho commit `9777e5c`:
+  <https://github.com/quanpl86/interactive-learning-platform/actions/runs/35518814751>.
 
 ## Bootstrap trên MacBook
 
