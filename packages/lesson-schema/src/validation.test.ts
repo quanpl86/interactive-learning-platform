@@ -90,4 +90,23 @@ describe('lesson v2 contract', () => {
     if (result.ok) return;
     expect(result.issues.filter(({ code }) => code === 'semantic.asset-missing')).toHaveLength(5);
   });
+
+  it('rejects duplicate, unsorted and out-of-range chapters', () => {
+    const lesson = clone(pythonLesson);
+    lesson.chapters = [
+      { id: 'chapter-duplicate', title: 'Sau', startSec: 220 },
+      { id: 'chapter-duplicate', title: 'Trước', startSec: 100 },
+      { id: 'chapter-too-late', title: 'Ngoài video', startSec: 500 },
+    ];
+    const result = validateLesson(lesson);
+    expect(result.ok).toBe(false);
+    if (result.ok) return;
+    expect(result.issues.map(({ code }) => code)).toEqual(
+      expect.arrayContaining([
+        'semantic.duplicate-id',
+        'semantic.chapter-order',
+        'semantic.chapter-out-of-range',
+      ]),
+    );
+  });
 });

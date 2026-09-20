@@ -5,6 +5,13 @@
   "locale": "vi-VN",
   "status": "draft",
   "durationSec": 0,
+  "chapters": [
+    {
+      "id": "chapter-web-task",
+      "title": "Nhiệm vụ Web Static",
+      "startSec": 0
+    }
+  ],
   "objectives": [
     {
       "id": "obj-web",

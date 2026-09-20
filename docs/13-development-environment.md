@@ -20,6 +20,10 @@ Workspace có thể nằm trên NTFS, APFS hoặc exFAT. Vì exFAT trên Windows
 - Không commit `node_modules` hay pnpm store.
 - Nếu di chuyển repo sang filesystem khác, không tự ý đổi linker nếu chưa kiểm tra cả host và Docker.
 
+Production build dùng Vite `--configLoader native` với Node 24 đã pin. Thiết lập này chạy trên
+Windows, macOS và Linux, đồng thời tránh việc bundle loader gọi lệnh ánh xạ ổ đĩa Windows trong môi
+trường phát triển bị giới hạn quyền.
+
 ## Docker development
 
 `compose.yaml` chạy hai Vite dev server, bind mount source, giữ `node_modules` Linux trong named volume và bật polling cho Docker Desktop. Có thể đổi host ports bằng `ADMIN_PORT` và `LEARNER_PORT`.

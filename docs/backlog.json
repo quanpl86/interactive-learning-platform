@@ -101,8 +101,11 @@
       ],
       "title": "Create lesson reader with safe Markdown and resource link",
       "acceptance": "Heading/navigation accessible and XSS test passes",
-      "status": "planned",
-      "evidence": []
+      "status": "done",
+      "evidence": [
+        "@ilp/lesson-player renders a React-node Markdown subset without raw HTML or dangerouslySetInnerHTML",
+        "Vitest confirms script markup is escaped and active/protocol-relative links are rejected; responsive E2E opens both v2 fixtures"
+      ]
     },
     {
       "id": "LRN-002",
@@ -112,8 +115,11 @@
       ],
       "title": "Integrate real video player, captions, chapters and time hook",
       "acceptance": "Controls/captions/seek run from actual media.currentTime",
-      "status": "planned",
-      "evidence": []
+      "status": "done",
+      "evidence": [
+        "Learning Workspace uses native video controls, optional caption track, validated chapter startSec and media timeupdate",
+        "E2E dispatches media timeupdate from currentTime and verifies crossed checkpoint state; missing fixture media shows an honest fallback"
+      ]
     },
     {
       "id": "LRN-003",
@@ -123,8 +129,11 @@
       ],
       "title": "Implement timeline event state machine",
       "acceptance": "Seek/reload/target mapping deterministic tests pass",
-      "status": "planned",
-      "evidence": []
+      "status": "done",
+      "evidence": [
+        "Timeline unit tests cover ordinary playback, forward seek, backward seek, repeatable and non-repeatable events using (previous,next] semantics",
+        "E2E verifies refresh resets demo-only state and UI explicitly states persistence is deferred to Slice 5"
+      ]
     },
     {
       "id": "LRN-004",
@@ -134,8 +143,11 @@
       ],
       "title": "Implement quiz and checklist evidence types",
       "acceptance": "Self cannot approve system/teacher evidence",
-      "status": "planned",
-      "evidence": []
+      "status": "done",
+      "evidence": [
+        "Formative quiz records an answer without receiving correctOptionId in the student payload or claiming an official grade",
+        "Self checklist is interactive while system/teacher evidence controls are disabled or derived; desktop/tablet/mobile E2E passes"
+      ]
     },
     {
       "id": "PY-001",

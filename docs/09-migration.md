@@ -15,7 +15,7 @@ Kiểm tra lại trong Slice 1 xác nhận `main@230380834630f571775a07424cfbb36
 ## Adapter đã triển khai
 - `migrateLessonV1ToV2()` nhận nguồn ngoài dưới dạng `unknown`, kiểm tra boundary rồi mới ánh xạ.
 - ID lesson/activity/resource, media reference, quiz option và starter content được giữ nguyên khi contract v2 hỗ trợ.
-- Simulation và chapter hiện chưa có kiểu v2 tương ứng: giữ trong `sourceArchive`, phát warning và bỏ timeline target không thể chạy.
+- Chapter v1 được ánh xạ sang `LessonChapter.startSec`. Simulation chưa có kiểu v2 tương ứng nên được giữ trong `sourceArchive`, phát warning và bỏ timeline target không thể chạy.
 - Locale v1 không tồn tại nên adapter dùng `vi-VN` kèm warning; objective bắt buộc được tạo từ chính description nguồn.
 - Resolver thiếu content/config trả warning; không tạo nội dung hoặc media giả.
 

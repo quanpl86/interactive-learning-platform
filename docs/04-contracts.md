@@ -9,6 +9,7 @@
 - Course: id, title, locale, modules, access.
 - ContentProject: id, type (lesson/video/document/slide/etc), draftRevision, blocks/assets.
 - LessonRelease: immutable ID and source revision, content blocks, media, activities, timeline, checklist, template references, checksums, publishedAt.
+- LessonChapter: stable ID, title và `startSec`; validator kiểm tra thứ tự/range và Player dùng để seek native video.
 - Activity: discriminated type quiz/quick-code/local-project/resource. Each has stable ID, visibility and completion policy.
 - StudentProgress: subjectId, releaseId, activityId, status, verified evidence reference; one record per idempotent update.
 - StudentDraft: subjectId, releaseId, activityId, file map and revision; save uses optimistic concurrency (revision/etag), never silent overwrites.

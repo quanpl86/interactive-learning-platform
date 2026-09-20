@@ -10,6 +10,7 @@ COPY package.json pnpm-lock.yaml pnpm-workspace.yaml .npmrc ./
 COPY apps/admin-studio/package.json apps/admin-studio/package.json
 COPY apps/learning-workspace/package.json apps/learning-workspace/package.json
 COPY packages/design-tokens/package.json packages/design-tokens/package.json
+COPY packages/lesson-player/package.json packages/lesson-player/package.json
 COPY packages/lesson-schema/package.json packages/lesson-schema/package.json
 COPY packages/shared-ui/package.json packages/shared-ui/package.json
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile

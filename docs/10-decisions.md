@@ -12,5 +12,6 @@
 - ADR-010 Accepted: MVP import can use existing MP4; local pipeline release gate later; no fabricated renders.
 - ADR-011 Accepted: support Windows and macOS host development plus Docker Desktop. Use one multi-stage Dockerfile for both frontend images and Compose for dev; containers never become a student-code runtime. Preserve exFAT-compatible pnpm settings until the repository filesystem changes and is revalidated.
 - ADR-012 Accepted: `schemas/lesson.schema.json` là nguồn contract v2; `@ilp/lesson-schema` dùng Ajv 2020-12 cho shape validation và semantic checks riêng cho cross-reference/security. Import v1 luôn giữ source archive và warning; release là snapshot SHA-256 bất biến. Student payload là projection loại teacher-only answer, không phải raw author/release document.
+- ADR-013 Accepted: Learning Workspace dùng React-node Markdown subset, không nhận raw HTML và không dùng `dangerouslySetInnerHTML`; link chỉ cho HTTPS hoặc path tương đối an toàn. Video dùng native `media.currentTime`, caption track và chapter contract. Timeline dùng forward crossing `(previous,next]`; quiz client chỉ ghi nhận formative, không tiết lộ đáp án hoặc tuyên bố điểm chính thức.
 
 Any change: create ADR with context, options, trade-offs, decision, consequences, approver before implementation. No implicit feature creep.

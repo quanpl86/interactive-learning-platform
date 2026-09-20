@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "tsc -p tsconfig.json && vite build",
+    "build": "tsc -p tsconfig.json && vite build --configLoader native",
     "dev": "vite --port 5173",
     "dev:e2e": "vite --host 127.0.0.1 --port 6173 --strictPort",
     "preview": "vite preview --port 4173",

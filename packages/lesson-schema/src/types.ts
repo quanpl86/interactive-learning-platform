@@ -5,6 +5,12 @@ export interface LessonObjective {
   text: string;
 }
 
+export interface LessonChapter {
+  id: string;
+  title: string;
+  startSec: number;
+}
+
 export interface MarkdownBlock {
   id: string;
   type: 'markdown';
@@ -101,6 +107,7 @@ export interface LessonDocument {
   locale: 'vi-VN';
   status: LessonStatus;
   durationSec?: number;
+  chapters?: LessonChapter[];
   objectives: LessonObjective[];
   contentBlocks: ContentBlock[];
   media?: LessonMedia;

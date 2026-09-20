@@ -277,15 +277,6 @@ export async function migrateLessonV1ToV2(
     'locale',
     'Schema v1 không có locale; migration dùng locale dự án vi-VN.',
   );
-  if (input.chapters.length > 0) {
-    warning(
-      warnings,
-      'chapters-preserved-in-archive',
-      'chapters',
-      'Chapter v1 chưa có trường tương ứng trong v2 và được giữ nguyên ở source archive.',
-    );
-  }
-
   const draft: LessonDocument = {
     schemaVersion: '2.0.0',
     id: input.id,
@@ -293,6 +284,11 @@ export async function migrateLessonV1ToV2(
     locale: 'vi-VN',
     status: 'draft',
     durationSec: input.duration,
+    chapters: input.chapters.map((chapter) => ({
+      id: chapter.id,
+      title: chapter.title,
+      startSec: chapter.start,
+    })),
     objectives: [{ id: 'objective-imported', text: input.description }],
     contentBlocks,
     ...(input.media?.video

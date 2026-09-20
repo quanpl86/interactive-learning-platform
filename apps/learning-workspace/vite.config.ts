@@ -15,6 +15,12 @@ export default defineConfig({
       '@ilp/shared-ui': fileURLToPath(
         new URL('../../packages/shared-ui/src/index.ts', import.meta.url),
       ),
+      '@ilp/lesson-schema': fileURLToPath(
+        new URL('../../packages/lesson-schema/src/index.ts', import.meta.url),
+      ),
+      '@ilp/lesson-player': fileURLToPath(
+        new URL('../../packages/lesson-player/src/index.ts', import.meta.url),
+      ),
     },
   },
   server: {

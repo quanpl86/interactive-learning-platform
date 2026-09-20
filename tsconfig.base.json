@@ -17,6 +17,7 @@
     "paths": {
       "@ilp/design-tokens": ["./packages/design-tokens/src/index.ts"],
       "@ilp/lesson-schema": ["./packages/lesson-schema/src/index.ts"],
+      "@ilp/lesson-player": ["./packages/lesson-player/src/index.ts"],
       "@ilp/shared-ui": ["./packages/shared-ui/src/index.ts"]
     },
     "skipLibCheck": true,

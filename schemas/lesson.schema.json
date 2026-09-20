@@ -43,6 +43,28 @@
       "type": "number",
       "minimum": 0
     },
+    "chapters": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "startSec"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9][a-zA-Z0-9._-]{2,79}$"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "startSec": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "additionalProperties": false
+      }
+    },
     "objectives": {
       "type": "array",
       "minItems": 1,

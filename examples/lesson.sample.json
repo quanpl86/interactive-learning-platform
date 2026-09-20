@@ -5,6 +5,23 @@
   "locale": "vi-VN",
   "status": "draft",
   "durationSec": 240,
+  "chapters": [
+    {
+      "id": "chapter-intro",
+      "title": "Mục tiêu và cú pháp print",
+      "startSec": 0
+    },
+    {
+      "id": "chapter-quiz",
+      "title": "Checkpoint quiz",
+      "startSec": 90
+    },
+    {
+      "id": "chapter-practice",
+      "title": "Quick practice",
+      "startSec": 180
+    }
+  ],
   "objectives": [
     {
       "id": "obj-print",

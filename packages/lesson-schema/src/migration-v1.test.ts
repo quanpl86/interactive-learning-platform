@@ -49,15 +49,18 @@ describe('migrateLessonV1ToV2', () => {
     expect(validateLesson(first.lesson)).toMatchObject({ ok: true });
     expect(first.lesson.id).toBe('WEB-FLEXBOX-01');
     expect(first.lesson.media?.videoRef).toBe('assets/video/lesson.mp4');
+    expect(first.lesson.chapters?.map(({ id }) => id)).toEqual([
+      'intro',
+      'quiz-checkpoint',
+      'practice-coding',
+      'simulation',
+      'summary',
+    ]);
     expect(first.lesson.activities.map(({ id }) => id)).toEqual(['quiz-01', 'coding-01']);
     expect(first.lesson.timeline.map(({ id }) => id)).toEqual(['cp-01', 'cp-02', 'cp-03']);
     expect(first.sourceArchive).toEqual(lessonV1);
     expect(first.warnings.map(({ code }) => code)).toEqual(
-      expect.arrayContaining([
-        'unsupported-activity',
-        'timeline-target-skipped',
-        'chapters-preserved-in-archive',
-      ]),
+      expect.arrayContaining(['unsupported-activity', 'timeline-target-skipped']),
     );
   });
 

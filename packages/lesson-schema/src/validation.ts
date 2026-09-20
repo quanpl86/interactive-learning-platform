@@ -98,6 +98,7 @@ function semanticIssues(
     lesson.objectives.map(({ id }) => id),
     '/objectives',
   );
+  pushDuplicateIssues(issues, lesson.chapters?.map(({ id }) => id) ?? [], '/chapters');
   pushDuplicateIssues(
     issues,
     lesson.contentBlocks.map(({ id }) => id),
@@ -124,6 +125,25 @@ function semanticIssues(
   const resources = new Set(
     lesson.contentBlocks.filter((block) => block.type === 'resource').map(({ id }) => id),
   );
+
+  let previousChapterTime = -1;
+  lesson.chapters?.forEach((chapter, index) => {
+    if (lesson.durationSec === undefined || chapter.startSec > lesson.durationSec) {
+      issues.push({
+        code: 'semantic.chapter-out-of-range',
+        message: 'Mốc chapter phải nằm trong durationSec đã khai báo.',
+        path: `/chapters/${index}/startSec`,
+      });
+    }
+    if (chapter.startSec < previousChapterTime) {
+      issues.push({
+        code: 'semantic.chapter-order',
+        message: 'Chapter phải được sắp xếp tăng dần theo startSec.',
+        path: `/chapters/${index}/startSec`,
+      });
+    }
+    previousChapterTime = chapter.startSec;
+  });
 
   lesson.activities.forEach((activity, activityIndex) => {
     if (activity.type === 'quiz') {
