@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "1.0.0",
+  "kind": "local-project-template",
+  "id": "python-tkinter-local",
+  "name": "Tkinter + SQLite (local)",
+  "runtime": "local-python",
+  "entryPoint": "main.py",
+  "files": [
+    "main.py",
+    "requirements.txt",
+    "README.md"
+  ],
+  "runInstructions": [
+    "python --version",
+    "python main.py"
+  ],
+  "excludedPaths": [
+    ".venv/",
+    "__pycache__/",
+    ".env"
+  ],
+  "submission": {
+    "type": "zip",
+    "maxBytes": 10485760
+  }
+}

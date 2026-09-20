@@ -1,0 +1,407 @@
+{
+  "version": "1.0.0",
+  "policy": "Status planned until code/test evidence exists. Do not auto mark done.",
+  "statuses": [
+    "planned",
+    "in-progress",
+    "blocked",
+    "done"
+  ],
+  "items": [
+    {
+      "id": "FND-001",
+      "slice": 0,
+      "dependsOn": [],
+      "title": "Bootstrap pnpm monorepo and two Vite React TS applications",
+      "acceptance": "Both apps boot and build; no existing work overwritten",
+      "status": "done",
+      "evidence": [
+        "pnpm build: Admin Studio and Learning Workspace production builds passed",
+        "docker build: production images passed for both apps",
+        "docker compose dev: both apps returned HTTP 200 on isolated test ports"
+      ]
+    },
+    {
+      "id": "FND-002",
+      "slice": 0,
+      "dependsOn": [
+        "FND-001"
+      ],
+      "title": "Implement shared light-only design tokens, UI components, responsive shells",
+      "acceptance": "360/768/1280 checked; keyboard focus visible; no dark mode",
+      "status": "done",
+      "evidence": [
+        "Playwright: 6/6 app-shell tests passed at 360, 768 and 1280 px",
+        "E2E asserted light color-scheme, no horizontal overflow and honest disabled actions"
+      ]
+    },
+    {
+      "id": "FND-003",
+      "slice": 0,
+      "dependsOn": [
+        "FND-001"
+      ],
+      "title": "Add lint, typecheck, unit tests and CI scripts",
+      "acceptance": "Commands run and fail on deliberate invalid fixture",
+      "status": "done",
+      "evidence": [
+        "pnpm lint, pnpm typecheck, pnpm test and pnpm build passed",
+        "pnpm quality:negative rejected deliberate invalid TypeScript fixture with TS2322",
+        "GitHub Actions workflow added for quality and Docker builds"
+      ]
+    },
+    {
+      "id": "MOD-001",
+      "slice": 1,
+      "dependsOn": [
+        "FND-001"
+      ],
+      "title": "Implement lesson v2 schema/validator/typed model",
+      "acceptance": "Sample fixtures pass; invalid enum/timestamp rejects",
+      "status": "planned",
+      "evidence": []
+    },
+    {
+      "id": "MOD-002",
+      "slice": 1,
+      "dependsOn": [
+        "MOD-001"
+      ],
+      "title": "Implement versioned v1 lesson import with warning report",
+      "acceptance": "Fixture migration preserves IDs/media refs; no missing media invented",
+      "status": "planned",
+      "evidence": []
+    },
+    {
+      "id": "MOD-003",
+      "slice": 1,
+      "dependsOn": [
+        "MOD-001"
+      ],
+      "title": "Implement immutable release and draft model",
+      "acceptance": "Editing draft leaves old release unchanged",
+      "status": "planned",
+      "evidence": []
+    },
+    {
+      "id": "LRN-001",
+      "slice": 2,
+      "dependsOn": [
+        "MOD-001",
+        "FND-002"
+      ],
+      "title": "Create lesson reader with safe Markdown and resource link",
+      "acceptance": "Heading/navigation accessible and XSS test passes",
+      "status": "planned",
+      "evidence": []
+    },
+    {
+      "id": "LRN-002",
+      "slice": 2,
+      "dependsOn": [
+        "LRN-001"
+      ],
+      "title": "Integrate real video player, captions, chapters and time hook",
+      "acceptance": "Controls/captions/seek run from actual media.currentTime",
+      "status": "planned",
+      "evidence": []
+    },
+    {
+      "id": "LRN-003",
+      "slice": 2,
+      "dependsOn": [
+        "LRN-002"
+      ],
+      "title": "Implement timeline event state machine",
+      "acceptance": "Seek/reload/target mapping deterministic tests pass",
+      "status": "planned",
+      "evidence": []
+    },
+    {
+      "id": "LRN-004",
+      "slice": 2,
+      "dependsOn": [
+        "LRN-003"
+      ],
+      "title": "Implement quiz and checklist evidence types",
+      "acceptance": "Self cannot approve system/teacher evidence",
+      "status": "planned",
+      "evidence": []
+    },
+    {
+      "id": "PY-001",
+      "slice": 3,
+      "dependsOn": [
+        "FND-002",
+        "MOD-001"
+      ],
+      "title": "Add fixed tab Monaco quick Python editor",
+      "acceptance": "Code editable, reset prompts for dirty changes",
+      "status": "planned",
+      "evidence": []
+    },
+    {
+      "id": "PY-002",
+      "slice": 3,
+      "dependsOn": [
+        "PY-001"
+      ],
+      "title": "Implement pinned Pyodide module Worker lazy load",
+      "acceptance": "Real print output and exception displayed; UI responsive",
+      "status": "planned",
+      "evidence": []
+    },
+    {
+      "id": "PY-003",
+      "slice": 3,
+      "dependsOn": [
+        "PY-002"
+      ],
+      "title": "Run, Stop via terminate and fresh Worker, output limits",
+      "acceptance": "Infinite loop stop works; can run again",
+      "status": "planned",
+      "evidence": []
+    },
+    {
+      "id": "PY-004",
+      "slice": 3,
+      "dependsOn": [
+        "PY-002"
+      ],
+      "title": "Implement simple formative output checks",
+      "acceptance": "Known pass/fail and user code cannot claim trusted grade",
+      "status": "planned",
+      "evidence": []
+    },
+    {
+      "id": "WEB-001",
+      "slice": 4,
+      "dependsOn": [
+        "FND-002",
+        "MOD-001"
+      ],
+      "title": "Fixed HTML/CSS/JS Monaco tabs and preview UI",
+      "acceptance": "Three files editable and preview pane visible",
+      "status": "planned",
+      "evidence": []
+    },
+    {
+      "id": "WEB-002",
+      "slice": 4,
+      "dependsOn": [
+        "WEB-001"
+      ],
+      "title": "Isolated preview origin/iframe and explicit Run",
+      "acceptance": "JS click runs without parent token or DOM access",
+      "status": "planned",
+      "evidence": []
+    },
+    {
+      "id": "WEB-003",
+      "slice": 4,
+      "dependsOn": [
+        "WEB-002"
+      ],
+      "title": "Console and formative DOM/CSS checks with safe bridge",
+      "acceptance": "Message protocol validated and malicious payload ignored",
+      "status": "planned",
+      "evidence": []
+    },
+    {
+      "id": "SAVE-001",
+      "slice": 5,
+      "dependsOn": [
+        "MOD-003",
+        "PY-001",
+        "WEB-001"
+      ],
+      "title": "Save draft API/revision and offline pending/conflict UI",
+      "acceptance": "Refresh restores last durable save; 409 conflict visible",
+      "status": "planned",
+      "evidence": []
+    },
+    {
+      "id": "SAVE-002",
+      "slice": 5,
+      "dependsOn": [
+        "LRN-004",
+        "SAVE-001"
+      ],
+      "title": "Persist progress, resume and idempotent checklist",
+      "acceptance": "Reload stable, no duplicate completion",
+      "status": "planned",
+      "evidence": []
+    },
+    {
+      "id": "SAVE-003",
+      "slice": 5,
+      "dependsOn": [
+        "SAVE-001"
+      ],
+      "title": "Local ZIP starter download and student upload",
+      "acceptance": "Only allowed source; ownership, quota and ZIP validations",
+      "status": "planned",
+      "evidence": []
+    },
+    {
+      "id": "ADM-001",
+      "slice": 6,
+      "dependsOn": [
+        "FND-002",
+        "MOD-003"
+      ],
+      "title": "Course/lesson CRUD with author role and drafts",
+      "acceptance": "Author can create lesson without source edits",
+      "status": "planned",
+      "evidence": []
+    },
+    {
+      "id": "ADM-002",
+      "slice": 6,
+      "dependsOn": [
+        "ADM-001",
+        "LRN-004"
+      ],
+      "title": "Quiz/practice/timeline author forms and student preview",
+      "acceptance": "Validated authored lesson runs in learner preview without progress mutation",
+      "status": "planned",
+      "evidence": []
+    },
+    {
+      "id": "ADM-003",
+      "slice": 6,
+      "dependsOn": [
+        "ADM-002"
+      ],
+      "title": "Reviewer workflow and publish preflight",
+      "acceptance": "Invalid assets prevent release; approved immutable",
+      "status": "planned",
+      "evidence": []
+    },
+    {
+      "id": "VID-001",
+      "slice": 7,
+      "dependsOn": [
+        "MOD-003",
+        "ADM-003"
+      ],
+      "title": "Video project schema, scene/narration data and import MP4",
+      "acceptance": "Imported media inspectable; missing assets show blocker",
+      "status": "planned",
+      "evidence": []
+    },
+    {
+      "id": "VID-002",
+      "slice": 7,
+      "dependsOn": [
+        "VID-001"
+      ],
+      "title": "Media job contract with outbound local worker auth/lease",
+      "acceptance": "Job retries idempotently after worker offline",
+      "status": "planned",
+      "evidence": []
+    },
+    {
+      "id": "VID-003",
+      "slice": 7,
+      "dependsOn": [
+        "VID-002"
+      ],
+      "title": "VieNeu adapter, audio segments and timing metadata",
+      "acceptance": "Actual WAV from installed engine measured or blocked honestly",
+      "status": "planned",
+      "evidence": []
+    },
+    {
+      "id": "VID-004",
+      "slice": 7,
+      "dependsOn": [
+        "VID-003"
+      ],
+      "title": "Motion Canvas scene templates and FFmpeg export",
+      "acceptance": "Rendered MP4 verified by probe and playable",
+      "status": "planned",
+      "evidence": []
+    },
+    {
+      "id": "VID-005",
+      "slice": 7,
+      "dependsOn": [
+        "VID-004"
+      ],
+      "title": "Subtitle VTT and author timeline editor",
+      "acceptance": "Events anchored/resolved to final media duration",
+      "status": "planned",
+      "evidence": []
+    },
+    {
+      "id": "PUB-001",
+      "slice": 8,
+      "dependsOn": [
+        "VID-005",
+        "LRN-004"
+      ],
+      "title": "Hosted interactive release+embed package",
+      "acceptance": "Quiz/code works at checkpoint; auth works for embed",
+      "status": "planned",
+      "evidence": []
+    },
+    {
+      "id": "PUB-002",
+      "slice": 8,
+      "dependsOn": [
+        "VID-005"
+      ],
+      "title": "Standalone MP4 exporter and adaptation options",
+      "acceptance": "MP4 has no false interactive affordances",
+      "status": "planned",
+      "evidence": []
+    },
+    {
+      "id": "PUB-003",
+      "slice": 8,
+      "dependsOn": [
+        "PUB-001",
+        "PUB-002"
+      ],
+      "title": "Publication manifest and preflight with checksums",
+      "acceptance": "Two outputs pinned to one approved source, old version intact",
+      "status": "planned",
+      "evidence": []
+    },
+    {
+      "id": "OPS-001",
+      "slice": 9,
+      "dependsOn": [
+        "PUB-003",
+        "SAVE-003"
+      ],
+      "title": "Security threat model, hardening and privacy review",
+      "acceptance": "No critical blockers, real student data isolated",
+      "status": "planned",
+      "evidence": []
+    },
+    {
+      "id": "OPS-002",
+      "slice": 9,
+      "dependsOn": [
+        "OPS-001"
+      ],
+      "title": "Load/accessibility/backup restore rehearsal",
+      "acceptance": "Actual evidence and limits documented",
+      "status": "planned",
+      "evidence": []
+    },
+    {
+      "id": "OPS-003",
+      "slice": 9,
+      "dependsOn": [
+        "OPS-002"
+      ],
+      "title": "Deployment runbook and rollback rehearsal",
+      "acceptance": "Verified deploy logs and rollback only after user approval",
+      "status": "planned",
+      "evidence": []
+    }
+  ]
+}

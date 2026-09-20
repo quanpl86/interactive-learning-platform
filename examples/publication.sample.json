@@ -1,0 +1,17 @@
+{
+  "manifestVersion": "1.0.0",
+  "publicationId": "pub-py-01",
+  "releaseId": "release-placeholder",
+  "sourceRevision": "rev-placeholder",
+  "type": "interactive-web",
+  "status": "planned",
+  "assets": [],
+  "requiresServices": [
+    "lesson-api",
+    "progress-api"
+  ],
+  "preflight": {
+    "status": "not-run",
+    "errors": []
+  }
+}

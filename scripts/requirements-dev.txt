@@ -1,0 +1,2 @@
+# Optional: enables full JSON Schema validation in validate_handoff.py
+jsonschema>=4.20,<5

@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "2.0.0",
+  "id": "WEB-STATIC-01",
+  "title": "Thực hành HTML/CSS/JS nhanh",
+  "locale": "vi-VN",
+  "status": "draft",
+  "durationSec": 0,
+  "objectives": [
+    {
+      "id": "obj-web",
+      "text": "Tạo tiêu đề và thay đổi nội dung khi nhấn nút."
+    }
+  ],
+  "contentBlocks": [
+    {
+      "id": "intro-web",
+      "type": "markdown",
+      "markdown": "## Nhiệm vụ\nSửa tiêu đề, chỉnh CSS và nhấn **Run** để xem kết quả."
+    }
+  ],
+  "activities": [
+    {
+      "id": "code-web",
+      "type": "quick-code",
+      "runtime": "web-static",
+      "files": {
+        "index.html": "<h1 id=\"title\">Xin chào!</h1>\n<button id=\"change\">Đổi tiêu đề</button>",
+        "style.css": "body { font-family: sans-serif; padding: 24px; } h1 { color: #047857; }",
+        "script.js": "document.querySelector(\"#change\").addEventListener(\"click\", () => { document.querySelector(\"#title\").textContent = \"Đã thay đổi\"; });"
+      },
+      "completion": "run"
+    }
+  ],
+  "timeline": [],
+  "checklist": [
+    {
+      "id": "check-run",
+      "text": "Tôi đã chạy trang web",
+      "evidence": "system",
+      "objectiveId": "obj-web",
+      "activityId": "code-web"
+    }
+  ]
+}

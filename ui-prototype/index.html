@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <title>EduFlow · UI prototype light-only</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Bỏ qua điều hướng</a>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Điều hướng sản phẩm">
+      <div class="brand"><span class="brand-icon" aria-hidden="true">E</span><span><strong>EduFlow</strong><small>Prototype · Light UI</small></span></div>
+      <div class="sidebar-group"><div class="sidebar-heading">KHÔNG GIAN LÀM VIỆC</div>
+        <button class="side-link is-active" type="button" data-view="admin" aria-current="page"><span aria-hidden="true">▦</span><span>Admin Studio</span></button>
+        <button class="side-link" type="button" data-view="learner"><span aria-hidden="true">▤</span><span>Learning Workspace</span></button>
+      </div>
+      <div class="sidebar-note"><strong>Phạm vi MVP</strong><p>Python Console và HTML/CSS/JS chạy trong trình duyệt. Dự án lớn thực hành local.</p><span class="chip chip-green">Light-only · Flat</span></div>
+      <div class="sidebar-footer">Bản thiết kế giao diện · Chưa có backend</div>
+    </aside>
+    <div class="workspace">
+      <header class="topbar">
+        <div><div class="eyebrow">INTERACTIVE LEARNING PLATFORM</div><div class="topbar-title" id="topbar-title">Admin Studio</div></div>
+        <div class="topbar-actions"><span class="status"><span class="status-dot"></span> Prototype</span><span class="avatar" aria-label="Tài khoản minh họa">QT</span></div>
+      </header>
+      <nav class="mobile-navigation" aria-label="Chọn ứng dụng">
+        <button type="button" data-view="admin" class="mobile-link is-active" aria-current="page">Admin Studio</button>
+        <button type="button" data-view="learner" class="mobile-link">Learning Workspace</button>
+      </nav>
+      <main id="main" tabindex="-1">
+        <section class="view is-visible" id="view-admin" aria-labelledby="admin-title">
+          <div class="page-heading"><div><div class="breadcrumb">Không gian quản trị / Tổng quan</div><h1 id="admin-title">Quản lý và sản xuất học liệu</h1><p>Một nơi biên soạn bài học, video, hoạt động thực hành và phát hành nội dung.</p></div><span class="pill">DỮ LIỆU MINH HỌA</span></div>
+          <div class="stats"><article class="stat"><span>Khóa học mẫu</span><strong>02</strong><small>Python · Web Development</small></article><article class="stat"><span>Loại bài tập nhanh</span><strong>02</strong><small>Python · HTML/CSS/JS</small></article><article class="stat"><span>Đầu ra video</span><strong>02</strong><small>Interactive Web · MP4</small></article><article class="stat"><span>Runtime cloud</span><strong>0</strong><small>Không nằm trong MVP</small></article></div>
+          <div class="tabs" role="tablist" aria-label="Quản trị nội dung">
+            <button id="admin-tab-courses" role="tab" aria-selected="true" aria-controls="admin-panel-courses" tabindex="0" class="tab active" data-admin-tab="courses">Khóa học</button>
+            <button id="admin-tab-author" role="tab" aria-selected="false" aria-controls="admin-panel-author" tabindex="-1" class="tab" data-admin-tab="author">Tạo bài học</button>
+            <button id="admin-tab-publish" role="tab" aria-selected="false" aria-controls="admin-panel-publish" tabindex="-1" class="tab" data-admin-tab="publish">Xuất bản</button>
+          </div>
+          <section id="admin-panel-courses" role="tabpanel" aria-labelledby="admin-tab-courses" class="tab-panel active">
+            <div class="section-head"><div><h2>Danh mục khóa học</h2><p>Nội dung cố định để kiểm tra bố cục.</p></div><button type="button" class="button button-primary" data-open-author>Tạo học liệu mới</button></div>
+            <div class="course-grid"><article class="course-card"><div class="course-icon">Py</div><div class="course-body"><span class="chip chip-green">Course family A</span><h3>Python Development</h3><p>Console · SQLite local · Tkinter · Pygame</p><div class="card-divider"></div><span class="muted">Quick practice trên web + dự án local</span></div></article><article class="course-card"><div class="course-icon course-blue">{ }</div><div class="course-body"><span class="chip chip-blue">Course family B</span><h3>Web Development</h3><p>HTML · CSS · JS · Bootstrap · React · Next.js</p><div class="card-divider"></div><span class="muted">Quick practice tĩnh + dự án local</span></div></article></div>
+            <article class="panel"><div class="section-head"><h2>Quy trình sản xuất</h2><span class="chip">Thiết kế mục tiêu</span></div><div class="flow-steps"><span>Soạn nội dung</span><span aria-hidden="true">→</span><span>Gắn video và tương tác</span><span aria-hidden="true">→</span><span>Review</span><span aria-hidden="true">→</span><span>Xuất bản</span></div></article>
+          </section>
+          <section id="admin-panel-author" role="tabpanel" aria-labelledby="admin-tab-author" class="tab-panel" hidden>
+            <div class="section-head"><div><h2>Tạo nội dung</h2><p>Chọn loại dự án. Trường nhập được dùng để thử thiết kế, chưa lưu lên server.</p></div><span class="chip chip-blue">Mock authoring</span></div>
+            <div class="two-col"><div class="panel form-panel"><label for="content-type">Loại nội dung</label><select id="content-type"><option value="lesson">Bài học đa phương tiện</option><option value="interactive">Video tương tác</option><option value="video">Video MP4 thuần</option><option value="document">Tài liệu / Worksheet</option><option value="slides">Bài trình chiếu</option><option value="assessment">Quiz / Checklist</option><option value="project">Project template</option></select><label for="lesson-name">Tên bài học</label><input id="lesson-name" type="text" value="Lệnh print() trong Python" maxlength="180"><label for="lesson-goal">Mục tiêu học tập</label><textarea id="lesson-goal" rows="4">Học sinh viết và chạy được chương trình in ra màn hình.</textarea><div class="form-actions"><button type="button" class="button button-primary" id="author-preview">Xem cấu hình</button><button type="button" class="button button-secondary" id="author-reset">Khôi phục mẫu</button></div></div><div class="panel"><h3>Những công cụ sẽ mở</h3><p class="muted">Editor thay đổi theo loại nội dung.</p><div id="author-tools" class="tool-tags"></div><div class="notice"><strong>Không có lưu bản nháp trong prototype.</strong><p>Codex sẽ triển khai lưu và quản lý phiên bản ở Slice 6.</p></div><pre class="config-preview" id="author-config" aria-label="Cấu hình xem thử">Chọn “Xem cấu hình” để hiển thị JSON.</pre></div></div>
+          </section>
+          <section id="admin-panel-publish" role="tabpanel" aria-labelledby="admin-tab-publish" class="tab-panel" hidden>
+            <div class="section-head"><div><h2>Publishing Center</h2><p>Một nội dung nguồn, hai bản phát hành video khác nhau.</p></div><span class="chip chip-blue">Mock publish manifest</span></div>
+            <div class="two-col"><div class="panel"><h3>Chọn định dạng</h3><label class="choice"><input type="checkbox" id="format-web" checked><span><strong>Interactive Web</strong><small>MP4 + VTT + timeline + quiz + code editor</small></span></label><label class="choice"><input type="checkbox" id="format-mp4" checked><span><strong>MP4 thuần</strong><small>Video có âm thanh, không có quiz/editor thực thi</small></span></label><div class="card-divider"></div><label for="mp4-mode">Cách xử lý tương tác trong MP4</label><select id="mp4-mode"><option value="original">Giữ bản dựng gốc</option><option value="adapted">Bản xem độc lập, cần scene giải thích</option><option value="solution">Câu hỏi và lời giải</option></select><button type="button" class="button button-primary" id="download-manifest">Tải manifest mẫu (.json)</button></div><div class="panel"><h3>Preflight trước khi xuất bản</h3><ul class="checks-static"><li>Kiểm tra phiên bản nguồn và tài nguyên</li><li>Kiểm tra độ dài video và phụ đề</li><li>Kiểm tra checkpoint và activity target</li><li>Kiểm tra quyền và chế độ MP4</li></ul><div class="notice"><strong>Chưa xuất bản thực tế.</strong><p>Manifest tải về chỉ là cấu hình lựa chọn; không tạo MP4 hay website.</p></div></div></div>
+          </section>
+        </section>
+        <section class="view" id="view-learner" aria-labelledby="learner-title" hidden>
+          <div class="page-heading"><div><div class="breadcrumb">Python Development / Module 01 / Lesson 01</div><h1 id="learner-title">Lệnh print() trong Python</h1><p>Đọc kiến thức → xem hướng dẫn → chạy mã → kiểm tra mục tiêu.</p></div><span class="pill pill-green">BÀI HỌC MẪU</span></div>
+          <div class="learning-grid"><div class="learning-main">
+            <article class="panel objective"><div class="section-head"><h2>Mục tiêu bài học</h2><span class="chip chip-green">01 / Python</span></div><p>Viết chương trình in ra màn hình; quan sát kết quả trong Console và thử thay đổi nội dung.</p><div class="inline-tags"><span class="tag">print()</span><span class="tag">Console</span><span class="tag">Run / Reset</span></div></article>
+            <article class="panel reading"><h2>1. Đọc nội dung</h2><p>Lệnh <code>print()</code> giúp hiển thị thông tin. Thử thay đổi chuỗi bên trong dấu ngoặc kép, sau đó chạy lại chương trình.</p><pre>print("Xin chào Python!")</pre></article>
+            <article class="panel video-card"><div class="section-head"><h2>2. Video hướng dẫn</h2><span class="chip">Video fixture chưa có</span></div><div class="video-placeholder"><div class="video-graphic"><div class="video-graphic-code">print("Hello Python!")</div><div class="video-caret">›</div></div><p>Vùng video tương tác 16:9</p><small>MP4 + VTT + checkpoint sẽ được tích hợp ở Slice 2</small></div><div class="timeline-mock"><span>00:00 Giới thiệu</span><span>01:30 Quiz</span><span>03:00 Code</span></div><p class="muted video-note">Chưa có tệp media: không hiển thị nút Play giả.</p></article>
+            <article class="panel"><div class="section-head"><h2>3. Kiểm tra nhanh</h2><span class="chip chip-blue">Formative demo</span></div><fieldset class="quiz"><legend>Lệnh nào in văn bản ra màn hình?</legend><label><input type="radio" name="quiz" value="input"> input()</label><label><input type="radio" name="quiz" value="print"> print()</label><label><input type="radio" name="quiz" value="return"> return</label></fieldset><button class="button button-primary" type="button" id="check-quiz">Kiểm tra đáp án</button><p id="quiz-feedback" role="status" aria-live="polite" class="feedback"></p></article>
+          </div><aside class="learning-side" aria-label="Tiến độ bài học"><article class="panel sticky-panel"><div class="section-head"><h2>Checklist</h2><span class="chip chip-blue" id="progress-count">0/3</span></div><div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div><label class="checkline"><input type="checkbox" id="check-read"><span>Đã đọc mục tiêu và nội dung<small>Tự xác nhận</small></span></label><div class="checkline auto-check"><input type="checkbox" id="check-quiz-status" disabled><span>Trả lời đúng câu hỏi<small>Tự động: kiểm tra nhanh</small></span></div><div class="checkline auto-check"><input type="checkbox" id="check-run" disabled><span>Thực hành đã chạy<small>Demo: chỉ ghi nhận Web Preview</small></span></div><p class="muted">Demo checklist này không ghi dữ liệu lên backend.</p><div class="card-divider"></div><h3>Thực hành dự án lớn</h3><p>Đối với Tkinter, Pygame, React hoặc Next.js: tải project, làm bằng VS Code trên máy và nộp ZIP.</p><button type="button" class="button button-secondary full" id="local-practice">Xem cách thực hành local</button></article></aside></div>
+          <article class="panel editor-panel" id="mini-editor"><div class="section-head"><div><h2>4. Mini Coding Workspace</h2><p>Code nhanh, không phải Cloud IDE đầy đủ.</p></div><div class="runtime-selector"><label for="runtime">Môi trường</label><select id="runtime"><option value="python">Python Console</option><option value="web">HTML / CSS / JS</option></select></div></div><div class="editor-layout"><div class="code-editor"><div class="editor-toolbar"><div class="file-tabs" id="file-tabs" role="tablist" aria-label="Tệp mã nguồn"></div><span class="chip">Light editor</span></div><label class="sr-only" for="code-input">Nội dung mã nguồn</label><textarea id="code-input" spellcheck="false" aria-label="Vùng soạn mã" rows="12"></textarea><div class="editor-actions"><button type="button" class="button button-primary" id="run-code">▶ Chạy mã</button><button type="button" class="button button-secondary" id="reset-code">Khôi phục</button><span id="run-status" role="status" aria-live="polite" class="muted">Chưa chạy</span></div></div><div class="preview-pane"><div class="preview-head"><h3 id="preview-heading">Console Output</h3><span class="chip" id="preview-badge">Python</span></div><div id="python-preview" class="python-preview" role="status" aria-live="polite">Bản thiết kế chưa tải Pyodide. Codex sẽ triển khai Python Worker thật ở Slice 3.</div><iframe id="web-preview" title="Web preview cô lập" sandbox="allow-scripts" referrerpolicy="no-referrer" hidden></iframe></div></div><p class="muted small">Prototype: HTML/CSS/JS có preview thử trong iframe hạn chế. Python không giả lập kết quả. Production phải dùng origin riêng, CSP và kiểm thử bảo mật.</p></article>
+        </section>
+      </main>
+    </div>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>

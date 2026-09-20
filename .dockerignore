@@ -1,0 +1,14 @@
+.git
+.github
+.env
+.env.*
+!.env.example
+node_modules
+**/node_modules
+dist
+**/dist
+coverage
+playwright-report
+test-results
+ui-prototype/*.png
+interactive_learning_codex_handoff_v1.zip

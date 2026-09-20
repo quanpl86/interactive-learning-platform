@@ -1,0 +1,120 @@
+{
+  "schemaVersion": "2.0.0",
+  "id": "PY-GUESS-01",
+  "title": "Trò chơi đoán số — Python Console",
+  "locale": "vi-VN",
+  "status": "draft",
+  "durationSec": 240,
+  "objectives": [
+    {
+      "id": "obj-print",
+      "text": "Sử dụng print() để in thông tin và giải thích kết quả."
+    },
+    {
+      "id": "obj-input",
+      "text": "Thực hành chạy chương trình và kiểm tra output."
+    }
+  ],
+  "contentBlocks": [
+    {
+      "id": "block-intro",
+      "type": "markdown",
+      "markdown": "## Mục tiêu\nHọc cách in kết quả bằng Python. Sau đó thực hành nhanh trên trình duyệt."
+    },
+    {
+      "id": "block-code",
+      "type": "code",
+      "language": "python",
+      "filename": "main.py",
+      "code": "print(\"Xin chào Python!\")"
+    },
+    {
+      "id": "block-resource",
+      "type": "resource",
+      "title": "Tham khảo cú pháp print",
+      "url": "https://docs.python.org/3/library/functions.html#print"
+    }
+  ],
+  "media": {
+    "videoRef": "assets/video/demo.mp4",
+    "subtitleRef": "assets/video/demo.vtt",
+    "posterRef": "assets/video/poster.webp",
+    "assetRevision": "media-r1"
+  },
+  "activities": [
+    {
+      "id": "quiz-print",
+      "type": "quiz",
+      "question": "Lệnh nào in chữ ra màn hình?",
+      "options": [
+        {
+          "id": "opt-a",
+          "text": "print()"
+        },
+        {
+          "id": "opt-b",
+          "text": "input()"
+        }
+      ],
+      "correctOptionId": "opt-a",
+      "completion": "answered",
+      "assessmentMode": "formative-client"
+    },
+    {
+      "id": "code-print",
+      "type": "quick-code",
+      "runtime": "python-console",
+      "files": {
+        "main.py": "print(\"Xin chào Python!\")"
+      },
+      "completion": "formative-tests",
+      "testSpecRef": "tests/print.formative.json"
+    },
+    {
+      "id": "project-local",
+      "type": "local-project",
+      "templateRef": "assets/templates/python-guess-starter.zip",
+      "guideRef": "docs/local-practice.md",
+      "completion": "submitted"
+    }
+  ],
+  "timeline": [
+    {
+      "id": "event-quiz",
+      "atSec": 90,
+      "action": "openQuiz",
+      "targetId": "quiz-print",
+      "pause": true,
+      "repeatable": false
+    },
+    {
+      "id": "event-code",
+      "atSec": 180,
+      "action": "openPractice",
+      "targetId": "code-print",
+      "pause": true,
+      "repeatable": false
+    }
+  ],
+  "checklist": [
+    {
+      "id": "check-read",
+      "text": "Tôi đã đọc mục tiêu",
+      "evidence": "self",
+      "objectiveId": "obj-print"
+    },
+    {
+      "id": "check-code",
+      "text": "Chạy thử chương trình",
+      "evidence": "system",
+      "objectiveId": "obj-input",
+      "activityId": "code-print"
+    },
+    {
+      "id": "check-review",
+      "text": "Giải thích sản phẩm với giáo viên",
+      "evidence": "teacher",
+      "objectiveId": "obj-input"
+    }
+  ]
+}

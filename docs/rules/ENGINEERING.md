@@ -1,0 +1,12 @@
+# Engineering rules (normative)
+- TypeScript strict and discriminated unions; runtime validation of external JSON; avoid `any` in contracts.
+- App/feature boundaries and dependency inversion; no app-import-app dependencies.
+- Version dependencies and commit lockfile; new dependency requires license, size/security evaluation.
+- Avoid cloning full upstream source if npm/pip library integration suffices.
+- Source of truth = backend persisted project revision, not Monaco model/iframe state.
+- Browser Python lazily initialized; Worker terminated for Stop; no unbounded stdout, infinite CPU or large memory without safe recovery.
+- Browser DOM preview strictly separate; no `eval` in parent; iframe must not receive secrets/auth credentials.
+- No `innerHTML` with unsanitized Markdown/options; no direct contentDocument reads from opaque sandbox iframe.
+- API validates authorization and file paths; test negative cases and edge cases.
+- Name fields stable IDs; include fixture version; migration and rollback for schema changes.
+- Implementation is real only after behavior tests; no hardcoded quiz path, dummy outputs, misleading `Published` toast.

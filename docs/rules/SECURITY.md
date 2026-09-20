@@ -1,0 +1,2 @@
+# Security rules (normative)
+Read `docs/07-security-privacy.md`. Stop and raise a blocker rather than silently weakening sandbox to make preview work. Never combine `allow-scripts allow-same-origin` for untrusted same-origin preview; no iframe content DOM reads. Validate `postMessage` schema/source/runId; do not trust self-reported grades. Keep school/child data and teacher-only assets private. No token/log secret exposure. Media workers use outbound authorization and scoped assets. Production changes need approval, rollback, backup and verified policy.

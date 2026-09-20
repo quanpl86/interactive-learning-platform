@@ -1,0 +1,17 @@
+{
+  "name": "@ilp/admin-studio",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.json && vite build",
+    "dev": "vite --port 5173",
+    "dev:e2e": "vite --host 127.0.0.1 --port 6173 --strictPort",
+    "preview": "vite preview --port 4173",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  }
+}

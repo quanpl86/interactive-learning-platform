@@ -1,0 +1,9 @@
+.notice {
+  margin-bottom: 20px;
+}
+
+.course-meta {
+  display: block;
+  margin-top: 12px;
+  color: var(--color-text-muted);
+}

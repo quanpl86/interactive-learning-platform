@@ -1,0 +1,12 @@
+packages:
+  - apps/*
+  - packages/*
+  - services/*
+
+nodeLinker: hoisted
+injectWorkspacePackages: true
+syncInjectedDepsAfterScripts:
+  - build
+
+onlyBuiltDependencies:
+  - esbuild
