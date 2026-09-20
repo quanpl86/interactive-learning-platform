@@ -142,6 +142,9 @@ Các package và service của Slice sau được tạo khi bắt đầu đúng 
 
 Repository `quanpl86/hocweb2026` tiếp tục là kho giáo trình Web độc lập. Hướng dẫn nhập học liệu nằm trong `docs/09-migration.md`.
 
+Khi chuyển máy hoặc tiếp tục một phiên Codex mới, bắt đầu từ `docs/14-progress-handoff.md` để lấy đúng
+branch, commit, lệnh bootstrap, bằng chứng kiểm thử và kế hoạch slice kế tiếp.
+
 ## License
 
 Chưa chọn. Không phát hành công khai hoặc thêm license trước khi hoàn tất rà soát dependency, model và tài sản nội dung.
