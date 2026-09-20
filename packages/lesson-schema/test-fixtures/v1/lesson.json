@@ -1,0 +1,85 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "WEB-FLEXBOX-01",
+  "title": "Khám phá CSS Flexbox qua giao diện Home & Login",
+  "status": "draft",
+  "duration": 480,
+  "description": "Bài học tương tác kết hợp hoạt họa giải thích Box Model, Flexbox và thử thách code thực hành căn giữa menu điều hướng.",
+  "media": {
+    "video": "assets/video/lesson.mp4",
+    "poster": "assets/images/flexbox.svg"
+  },
+  "chapters": [
+    { "id": "intro", "title": "01. Giới thiệu & Tổng quan Flexbox", "start": 0 },
+    { "id": "quiz-checkpoint", "title": "02. Kiểm tra nhanh: Kích hoạt Flexbox", "start": 60 },
+    {
+      "id": "practice-coding",
+      "title": "03. Thử thách lập trình: Căn giữa Header Menu",
+      "start": 180
+    },
+    { "id": "simulation", "title": "04. Thí nghiệm trực quan: Justify & Align", "start": 320 },
+    { "id": "summary", "title": "05. Tổng kết & Bài tập về nhà", "start": 420 }
+  ],
+  "content": {
+    "introduction": "content/introduction.md",
+    "theory": "content/flexbox-theory.md",
+    "summary": "content/summary.md"
+  },
+  "resources": [
+    {
+      "id": "flexbox-doc",
+      "title": "Chuyên đề 4 khái niệm CSS cốt lõi",
+      "path": "01-ly-thuyet/css/bon-khai-niem/HUONG_DAN_TUONG_TAC.html"
+    }
+  ],
+  "activities": [
+    {
+      "id": "quiz-01",
+      "type": "quiz",
+      "title": "Câu hỏi kiểm tra kiến thức Flexbox",
+      "config": "questions/q01/question.json"
+    },
+    {
+      "id": "coding-01",
+      "type": "coding",
+      "title": "Thực hành lập trình Flexbox",
+      "config": "activities/coding-01.json"
+    },
+    {
+      "id": "simulation-01",
+      "type": "simulation",
+      "title": "Thí nghiệm trực quan Flexbox Simulator",
+      "config": "activities/simulation-01.json"
+    }
+  ],
+  "timeline": [
+    {
+      "id": "cp-01",
+      "time": 60,
+      "action": "openActivity",
+      "target": "quiz-01",
+      "pauseVideo": true
+    },
+    {
+      "id": "cp-02",
+      "time": 120,
+      "action": "showResource",
+      "target": "flexbox-doc",
+      "pauseVideo": false
+    },
+    {
+      "id": "cp-03",
+      "time": 180,
+      "action": "openActivity",
+      "target": "coding-01",
+      "pauseVideo": true
+    },
+    {
+      "id": "cp-04",
+      "time": 320,
+      "action": "openActivity",
+      "target": "simulation-01",
+      "pauseVideo": true
+    }
+  ]
+}

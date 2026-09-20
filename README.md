@@ -6,7 +6,7 @@ Nền tảng sản xuất học liệu và học tập tương tác tích hợp 
 
 **Phiên bản:** `0.1.0` — Foundation
 
-**Trạng thái:** hai React app và design system đã chạy; dữ liệu hiện là fixture được gắn nhãn `DEMO`. Backend, tài khoản, lưu tiến độ, Lesson Engine và code runtime chưa được triển khai.
+**Trạng thái:** Foundation và Content Model v2 đã chạy; dữ liệu UI hiện vẫn là fixture được gắn nhãn `DEMO`. Backend, tài khoản, lưu tiến độ, Lesson Player và code runtime chưa được triển khai.
 
 ## Phạm vi Foundation
 
@@ -14,6 +14,7 @@ Nền tảng sản xuất học liệu và học tập tương tác tích hợp 
 - `apps/learning-workspace`: shell học tập và thực hành.
 - `packages/design-tokens`: light-only design tokens.
 - `packages/shared-ui`: semantic React components dùng chung.
+- `packages/lesson-schema`: contract v2, runtime validation, migration v1 và immutable release model.
 - pnpm workspace, strict TypeScript, ESLint, Prettier, Vitest và Playwright.
 - Docker dev workflow có hot reload và production image cho từng app.
 - GitHub Actions kiểm tra chất lượng và Docker build.
@@ -122,6 +123,7 @@ apps/
   learning-workspace/
 packages/
   design-tokens/
+  lesson-schema/
   shared-ui/
 docs/
 schemas/

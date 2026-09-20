@@ -1,0 +1,11 @@
+{
+  "id": "coding-01",
+  "type": "coding",
+  "title": "Thực hành: Dàn trang thanh điều hướng",
+  "instruction": "Viết CSS cho class .navbar.",
+  "starterFiles": {
+    "html": "starter/index.html",
+    "css": "starter/style.css"
+  },
+  "testSuite": "tests/flexbox.test.json"
+}

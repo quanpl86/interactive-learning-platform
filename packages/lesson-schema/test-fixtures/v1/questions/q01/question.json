@@ -1,0 +1,17 @@
+{
+  "id": "q01",
+  "type": "single-choice",
+  "content": "questions/q01/question.md",
+  "options": [
+    { "id": "A", "text": "display: block" },
+    { "id": "B", "text": "display: flex" },
+    { "id": "C", "text": "display: grid" },
+    { "id": "D", "text": "display: inline" }
+  ],
+  "answer": { "correctOptionIds": ["B"] },
+  "feedback": {
+    "explanation": "questions/q01/explanation.md",
+    "hint": "questions/q01/hint.md"
+  },
+  "settings": { "maxAttempts": 3, "pauseVideo": true }
+}

@@ -1,0 +1,4 @@
+{
+  "suite": "Kiểm thử bố cục Navbar Flexbox",
+  "tests": [{ "id": "t1", "selector": ".navbar", "property": "display", "expected": "flex" }]
+}

@@ -58,8 +58,11 @@
       ],
       "title": "Implement lesson v2 schema/validator/typed model",
       "acceptance": "Sample fixtures pass; invalid enum/timestamp rejects",
-      "status": "planned",
-      "evidence": []
+      "status": "done",
+      "evidence": [
+        "@ilp/lesson-schema added with Ajv 2020-12 shape validation and semantic cross-reference/security checks",
+        "Vitest validates both v2 fixtures and rejects invalid enum, negative time, duplicate IDs, unsafe paths/URLs and missing assets"
+      ]
     },
     {
       "id": "MOD-002",
@@ -69,8 +72,11 @@
       ],
       "title": "Implement versioned v1 lesson import with warning report",
       "acceptance": "Fixture migration preserves IDs/media refs; no missing media invented",
-      "status": "planned",
-      "evidence": []
+      "status": "done",
+      "evidence": [
+        "migrateLessonV1ToV2 tested against hocweb2026 WEB-FLEXBOX-01 at source revision 230380834630f571775a07424cfbb362b9a72108",
+        "Migration preserves source archive, lesson/activity/resource IDs, media refs and starter contents; unsupported simulation and missing sources emit structured warnings"
+      ]
     },
     {
       "id": "MOD-003",
@@ -80,8 +86,11 @@
       ],
       "title": "Implement immutable release and draft model",
       "acceptance": "Editing draft leaves old release unchanged",
-      "status": "planned",
-      "evidence": []
+      "status": "done",
+      "evidence": [
+        "FixtureLessonRepository implements optimistic draft revisions and explicit conflict errors without persistence claims",
+        "Vitest proves SHA-256 release snapshot remains unchanged after draft edit and student projection strips correctOptionId"
+      ]
     },
     {
       "id": "LRN-001",

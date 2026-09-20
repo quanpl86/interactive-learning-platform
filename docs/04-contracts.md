@@ -1,7 +1,9 @@
 # Data contracts and event semantics
 
 ## Schema policy
-`schemas/lesson.schema.json` is a **proposed v2 contract** with `examples/lesson.sample.json` as fixture. Do not assume existing `hocweb2026` schemaVersion 1.0.0 conforms. Write a versioned `migrateLessonV1ToV2()` and keep imports reversible/backups. Preserve unknown extensions under namespaced field only after approval; invalid required fields cause actionable errors.
+`schemas/lesson.schema.json` là contract v2 chính thức ở Slice 1, với runtime package `@ilp/lesson-schema` và hai fixture trong `examples/`. JSON Schema kiểm tra shape; semantic validator kiểm tra ID, target, timeline, đường dẫn, URL và asset manifest khi được cung cấp.
+
+`migrateLessonV1ToV2()` nhập schemaVersion 1.0.0 qua resolver chỉ đọc, trả warning có cấu trúc và giữ payload gốc trong `sourceArchive`. Activity chưa hỗ trợ không được phát minh thành loại khác. Student projection phải đi qua `toStudentLesson()` để loại `correctOptionId`; payload author/release không được gửi thẳng tới học sinh.
 
 ## Entities
 - Course: id, title, locale, modules, access.
@@ -31,3 +33,9 @@ Tests on browser reveal enough to be inspectable and user-controllable; do not c
 
 ## Contracts tests
 Valid fixtures pass validator, invalid fixtures for duplicate ID/missing target/negative time/unsupported activity reject. Publish revalidation mandatory, not only on UI. API request/response data contracts documented once app is implemented.
+
+## Slice 1 implementation
+- `LessonDraft` dùng revision và optimistic concurrency; conflict là lỗi tường minh.
+- `LessonRelease` pin `sourceRevision`, SHA-256 checksum và snapshot lesson đã publish.
+- `FixtureLessonRepository` chỉ dùng trong development/test và tự nhận diện là `fixture-memory`; không tuyên bố persistence.
+- Asset existence chỉ được khẳng định khi caller truyền asset manifest. Schema validation đơn thuần không đủ điều kiện publish.
