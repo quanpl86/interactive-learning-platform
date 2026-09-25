@@ -53,3 +53,19 @@ docker build --build-arg APP_NAME=learning-workspace -t ilp/learner:local .
 ```
 
 Trên máy có xung đột cổng, đặt `ADMIN_PORT`/`LEARNER_PORT` trước `docker compose up`.
+
+## Python runner
+
+Local development phục vụ `python-runner.html` từ cùng Vite server và chỉ tạo iframe/Worker khi học
+sinh bấm `Chạy mã`. Pyodide được pin `0.29.5`; `input()` chưa có stdin UI nên trả lỗi tiếng Việt rõ
+ràng. Stop/timeout terminate Worker và lượt chạy tiếp theo tạo Worker mới.
+
+Production không fallback về app origin. Cấu hình URL đầy đủ trong biến sau:
+
+```bash
+VITE_PYTHON_RUNNER_URL=https://python-runner.example.edu/python-runner.html
+```
+
+Runner origin phải không nhận platform cookie/token, chỉ cho phép parent origin đã cấu hình và gửi CSP
+bằng HTTP response header cho cả HTML lẫn Worker assets. Cho tới khi hạ tầng đó tồn tại, production
+build giữ nút chạy ở trạng thái tắt có giải thích; không coi Worker đơn lẻ là security sandbox.

@@ -6,7 +6,7 @@ Nền tảng sản xuất học liệu và học tập tương tác tích hợp 
 
 **Phiên bản:** `0.1.0` — Foundation
 
-**Trạng thái:** Foundation, Content Model v2 và Learning vertical đã chạy; dữ liệu UI vẫn là fixture được gắn nhãn `DEMO`. Backend, tài khoản, lưu tiến độ và code runtime chưa được triển khai.
+**Trạng thái:** Foundation, Content Model v2, Learning vertical và Mini Python đã chạy; dữ liệu UI vẫn là fixture được gắn nhãn `DEMO`. Backend, tài khoản, lưu tiến độ và Mini Web chưa được triển khai.
 
 ## Phạm vi Foundation
 
@@ -16,6 +16,7 @@ Nền tảng sản xuất học liệu và học tập tương tác tích hợp 
 - `packages/shared-ui`: semantic React components dùng chung.
 - `packages/lesson-schema`: contract v2, runtime validation, migration v1 và immutable release model.
 - `packages/lesson-player`: safe Markdown subset, native video/captions, chapters, timeline, quiz và checklist.
+- `packages/mini-coding`: Monaco light, Pyodide Worker tách runner page, Run/Stop/Reset và kiểm tra formative.
 - pnpm workspace, strict TypeScript, ESLint, Prettier, Vitest và Playwright.
 - Docker dev workflow có hot reload và production image cho từng app.
 - GitHub Actions kiểm tra chất lượng và Docker build.
@@ -41,6 +42,11 @@ pnpm dev
 
 - Admin Studio: <http://localhost:5173/dashboard>
 - Learning Workspace: <http://localhost:5174/courses>
+- Python lesson: <http://localhost:5174/learn/PY-GUESS-01>
+
+Ở local development, Python runner dùng `/python-runner.html` cùng dev server vì chưa có auth/cookie.
+Production chỉ bật nút chạy khi `VITE_PYTHON_RUNNER_URL` là HTTPS và khác origin ứng dụng; runner host
+phải không có platform cookie/token và gửi CSP bằng HTTP header cho HTML lẫn Worker assets.
 
 Chạy riêng từng app:
 

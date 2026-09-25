@@ -158,8 +158,11 @@
       ],
       "title": "Add fixed tab Monaco quick Python editor",
       "acceptance": "Code editable, reset prompts for dirty changes",
-      "status": "planned",
-      "evidence": []
+      "status": "done",
+      "evidence": [
+        "Monaco light uses stable per-activity file URIs, fixed teacher-provided tabs and disposes editors/models on unmount",
+        "Playwright verifies editable dirty state and confirmation-backed reset on desktop, tablet and mobile"
+      ]
     },
     {
       "id": "PY-002",
@@ -169,8 +172,11 @@
       ],
       "title": "Implement pinned Pyodide module Worker lazy load",
       "acceptance": "Real print output and exception displayed; UI responsive",
-      "status": "planned",
-      "evidence": []
+      "status": "done",
+      "evidence": [
+        "Pyodide 0.29.5 module Worker starts only on Run through a nonce/runId-scoped runner bridge",
+        "Playwright verifies real stdout, SyntaxError and explicit unsupported input() behavior"
+      ]
     },
     {
       "id": "PY-003",
@@ -180,8 +186,11 @@
       ],
       "title": "Run, Stop via terminate and fresh Worker, output limits",
       "acceptance": "Infinite loop stop works; can run again",
-      "status": "planned",
-      "evidence": []
+      "status": "done",
+      "evidence": [
+        "Runner enforces 45 second load watchdog, 8 second execution timeout, 32000 character output cap and bounded files/payload",
+        "Playwright verifies infinite loop Stop terminates the Worker and a subsequent fresh Worker prints output"
+      ]
     },
     {
       "id": "PY-004",
@@ -191,8 +200,11 @@
       ],
       "title": "Implement simple formative output checks",
       "acceptance": "Known pass/fail and user code cannot claim trusted grade",
-      "status": "planned",
-      "evidence": []
+      "status": "done",
+      "evidence": [
+        "Runtime-validated includes/equals checks have unit coverage for pass and fail using stdout only",
+        "Learner UI labels client results formative and never presents them as an official grade"
+      ]
     },
     {
       "id": "WEB-001",

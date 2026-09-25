@@ -4,6 +4,12 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
   plugins: [react()],
+  optimizeDeps: {
+    include: [
+      'monaco-editor/editor/editor.api',
+      'monaco-editor/languages/definitions/python/register',
+    ],
+  },
   resolve: {
     alias: {
       '@ilp/design-tokens/styles.css': fileURLToPath(
@@ -21,11 +27,22 @@ export default defineConfig({
       '@ilp/lesson-player': fileURLToPath(
         new URL('../../packages/lesson-player/src/index.ts', import.meta.url),
       ),
+      '@ilp/mini-coding': fileURLToPath(
+        new URL('../../packages/mini-coding/src/index.ts', import.meta.url),
+      ),
     },
   },
   server: {
     host: '0.0.0.0',
     port: 5174,
     strictPort: true,
+  },
+  build: {
+    rollupOptions: {
+      input: {
+        app: fileURLToPath(new URL('./index.html', import.meta.url)),
+        pythonRunner: fileURLToPath(new URL('./python-runner.html', import.meta.url)),
+      },
+    },
   },
 });

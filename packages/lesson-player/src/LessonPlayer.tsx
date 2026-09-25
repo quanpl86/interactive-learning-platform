@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, type ReactNode } from 'react';
 import type {
   StudentLessonActivity,
   StudentLessonDocument,
@@ -11,6 +11,10 @@ import { advanceTimeline, resetTimeline, type TimelineState } from './timeline';
 
 interface LessonPlayerProps {
   lesson: StudentLessonDocument;
+  renderQuickCode?: (
+    activity: Extract<StudentLessonActivity, { type: 'quick-code' }>,
+    onCompleted: () => void,
+  ) => ReactNode;
 }
 
 function activityTitle(activity: StudentLessonActivity): string {
@@ -25,7 +29,7 @@ function eventTitle(event: TimelineEvent, lesson: StudentLessonDocument): string
   return activity ? activityTitle(activity) : 'Checkpoint học tập';
 }
 
-export function LessonPlayer({ lesson }: LessonPlayerProps) {
+export function LessonPlayer({ lesson, renderQuickCode }: LessonPlayerProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [timeline, setTimeline] = useState<TimelineState>(resetTimeline());
   const [videoState, setVideoState] = useState<'idle' | 'ready' | 'error'>('idle');
@@ -34,6 +38,7 @@ export function LessonPlayer({ lesson }: LessonPlayerProps) {
   const [answeredQuizIds, setAnsweredQuizIds] = useState<ReadonlySet<string>>(new Set());
   const [selectedOptions, setSelectedOptions] = useState<Record<string, string>>({});
   const [selfChecklist, setSelfChecklist] = useState<ReadonlySet<string>>(new Set());
+  const [completedActivityIds, setCompletedActivityIds] = useState<ReadonlySet<string>>(new Set());
   const onMediaTime = (nextTime: number) => {
     setTimeline((previous) => {
       const transition = advanceTimeline(lesson.timeline, previous, nextTime);
@@ -239,6 +244,13 @@ export function LessonPlayer({ lesson }: LessonPlayerProps) {
                   setSelectedOptions((current) => ({ ...current, [activity.id]: optionId }))
                 }
                 onSubmit={() => submitQuiz(activity.id)}
+                quickCodeContent={
+                  activity.type === 'quick-code'
+                    ? renderQuickCode?.(activity, () =>
+                        setCompletedActivityIds((current) => new Set([...current, activity.id])),
+                      )
+                    : undefined
+                }
               />
             ))}
           </section>
@@ -260,7 +272,10 @@ export function LessonPlayer({ lesson }: LessonPlayerProps) {
                 const canSelfConfirm = item.evidence === 'self';
                 const checked = canSelfConfirm
                   ? selfChecklist.has(item.id)
-                  : Boolean(item.activityId && answeredQuizIds.has(item.activityId));
+                  : Boolean(
+                      item.activityId &&
+                        (answeredQuizIds.has(item.activityId) || completedActivityIds.has(item.activityId)),
+                    );
                 return (
                   <li key={item.id}>
                     <label>
@@ -290,7 +305,7 @@ export function LessonPlayer({ lesson }: LessonPlayerProps) {
             <span className="eyebrow">Trạng thái</span>
             <h2>Chưa lưu đồng bộ</h2>
             <p className="muted-copy">
-              Refresh trang sẽ reset trạng thái trong Slice 2. Save/resume thật thuộc Slice 5.
+              Dữ liệu demo hiện reset khi refresh. Save/resume thật thuộc Slice 5.
             </p>
           </Card>
         </aside>
@@ -306,6 +321,7 @@ function ActivityCard({
   selectedOption,
   onSelectOption,
   onSubmit,
+  quickCodeContent,
 }: {
   activity: StudentLessonActivity;
   active: boolean;
@@ -313,7 +329,9 @@ function ActivityCard({
   selectedOption: string | undefined;
   onSelectOption: (optionId: string) => void;
   onSubmit: () => void;
+  quickCodeContent?: ReactNode;
 }) {
+  if (activity.type === 'quick-code' && quickCodeContent) return quickCodeContent;
   if (activity.type !== 'quiz') {
     return (
       <Card className={active ? 'activity-card activity-card-active' : 'activity-card'}>
@@ -322,7 +340,7 @@ function ActivityCard({
             <span className="eyebrow">Practice</span>
             <h2>{activity.type === 'quick-code' ? 'Quick Code' : 'Local Project'}</h2>
           </div>
-          <Badge tone="warning">Slice 3–5</Badge>
+          <Badge tone="warning">Slice 5</Badge>
         </div>
         <p>
           {activity.type === 'quick-code'

@@ -12,6 +12,7 @@ COPY apps/learning-workspace/package.json apps/learning-workspace/package.json
 COPY packages/design-tokens/package.json packages/design-tokens/package.json
 COPY packages/lesson-player/package.json packages/lesson-player/package.json
 COPY packages/lesson-schema/package.json packages/lesson-schema/package.json
+COPY packages/mini-coding/package.json packages/mini-coding/package.json
 COPY packages/shared-ui/package.json packages/shared-ui/package.json
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 

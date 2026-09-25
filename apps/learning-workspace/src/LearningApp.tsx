@@ -1,6 +1,12 @@
+import { lazy, Suspense } from 'react';
 import { LessonPlayer } from '@ilp/lesson-player';
 import { AppShell, Badge, Card, PageHeader } from '@ilp/shared-ui';
+import printChecks from '../../../examples/tests/print.formative.json';
 import { demoLessons } from './fixtures';
+
+const PythonPractice = lazy(() =>
+  import('@ilp/mini-coding').then(({ PythonPractice: Component }) => ({ default: Component })),
+);
 
 const navigation = [
   { href: '/courses', label: 'Khóa học', icon: '▤' },
@@ -17,7 +23,28 @@ export function LearningApp() {
 
   return (
     <AppShell appName="Learning Workspace" currentPath={currentPath} navigation={navigation}>
-      {lesson ? <LessonPlayer key={lesson.id} lesson={lesson} /> : <CourseCatalog />}
+      {lesson ? (
+        <LessonPlayer
+          key={lesson.id}
+          lesson={lesson}
+          renderQuickCode={(activity, onCompleted) => {
+            if (activity.runtime !== 'python-console') return undefined;
+            return (
+              <Suspense fallback={<div className="lesson-notice">Đang tải trình soạn thảo…</div>}>
+                <PythonPractice
+                  activityId={activity.id}
+                  starterFiles={activity.files}
+                  checks={activity.testSpecRef === 'tests/print.formative.json' ? printChecks : undefined}
+                  runnerUrl={getPythonRunnerUrl()}
+                  onCompleted={onCompleted}
+                />
+              </Suspense>
+            );
+          }}
+        />
+      ) : (
+        <CourseCatalog />
+      )}
     </AppShell>
   );
 }
@@ -70,7 +97,7 @@ function CourseCatalog() {
       <div className="section-heading">
         <div>
           <h2>Phạm vi runtime</h2>
-          <p>Slice 2 chỉ đọc, video, quiz và checklist.</p>
+          <p>Python Console đã chạy thật; Web Static được triển khai ở Slice 4.</p>
         </div>
       </div>
       <section className="content-grid">
@@ -93,9 +120,9 @@ function CourseCatalog() {
             <li>
               <span>
                 <strong>Mini Coding</strong>
-                <small>Python và Web browser runtime thuộc Slice 3–4</small>
+                <small>Python Console sẵn sàng; Web Static thuộc Slice 4</small>
               </span>
-              <Badge tone="warning">Chưa tích hợp</Badge>
+              <Badge tone="success">Python sẵn sàng</Badge>
             </li>
           </ul>
         </Card>
@@ -110,4 +137,17 @@ function CourseCatalog() {
       </section>
     </>
   );
+}
+
+function getPythonRunnerUrl(): string | undefined {
+  const configured = import.meta.env.VITE_PYTHON_RUNNER_URL as string | undefined;
+  if (configured) {
+    const url = new URL(configured, window.location.origin);
+    if (!import.meta.env.DEV && (url.protocol !== 'https:' || url.origin === window.location.origin)) {
+      return undefined;
+    }
+    return url.toString();
+  }
+  if (import.meta.env.DEV) return new URL('/python-runner.html', window.location.origin).toString();
+  return undefined;
 }

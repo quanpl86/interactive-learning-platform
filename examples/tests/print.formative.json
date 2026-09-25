@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "checks": [
+    {
+      "id": "stdout-hello",
+      "label": "Chương trình in đúng lời chào Python",
+      "matcher": {
+        "type": "includes",
+        "value": "Xin chào Python!"
+      }
+    }
+  ]
+}
